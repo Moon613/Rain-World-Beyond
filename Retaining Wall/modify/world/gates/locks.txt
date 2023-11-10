@@ -1,0 +1,2 @@
+[ADD]GATE_SL_RT : 1 : 1
+[ADD]GATE_MS_RT : 1 : 1
