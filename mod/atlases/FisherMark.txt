@@ -1,0 +1,84 @@
+{"frames": {
+
+"FisherMark0.png":
+{
+	"frame": {"x":2,"y":2,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark1.png":
+{
+	"frame": {"x":65,"y":2,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark2.png":
+{
+	"frame": {"x":2,"y":65,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark3.png":
+{
+	"frame": {"x":65,"y":65,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark4.png":
+{
+	"frame": {"x":2,"y":128,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark5.png":
+{
+	"frame": {"x":65,"y":128,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark6.png":
+{
+	"frame": {"x":2,"y":191,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark7.png":
+{
+	"frame": {"x":65,"y":191,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherMark8.png":
+{
+	"frame": {"x":2,"y":254,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "FisherMark.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":317},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4506df698e20d9a783db5063aef7c423:4326054e2453b6dce7325ef98c3587aa:36b689eb6dafcbb5342d61680b559950$"
+}
+}

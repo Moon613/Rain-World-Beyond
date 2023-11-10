@@ -1,0 +1,84 @@
+{"frames": {
+
+"FisherDrop0.png":
+{
+	"frame": {"x":2,"y":2,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop1.png":
+{
+	"frame": {"x":65,"y":2,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop2.png":
+{
+	"frame": {"x":2,"y":65,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop3.png":
+{
+	"frame": {"x":65,"y":65,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop4.png":
+{
+	"frame": {"x":2,"y":128,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop5.png":
+{
+	"frame": {"x":65,"y":128,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop6.png":
+{
+	"frame": {"x":2,"y":191,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop7.png":
+{
+	"frame": {"x":65,"y":191,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+},
+"FisherDrop8.png":
+{
+	"frame": {"x":2,"y":254,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":61,"h":61},
+	"sourceSize": {"w":61,"h":61}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "FisherDrop.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":317},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a936b739e307bd3e43a8b0b83581da21:715b79f8adda238ce7b5eea3f9fcb0ba:a1daf1510c3c0c262e20f8e2caa5b804$"
+}
+}
