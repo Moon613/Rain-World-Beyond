@@ -1,0 +1,5 @@
+overseersSpawnChance: 0.2
+overseersMin: 0
+overseersMax: 1
+playerGuideOverseerSpawnChance: 0.3
+Subregion: Retaining Wall
