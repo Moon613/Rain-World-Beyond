@@ -104,7 +104,6 @@ class FisherMask : PlayerCarryableItem, IDrawable
 	}
 	public override void PickedUp(Creature upPicker)
 	{
-        Debug.Log($"Chimeric: Picked up by: {upPicker}");
 		room.PlaySound(SoundID.Vulture_Mask_Pick_Up, firstChunk);
 	}
 	public override void TerrainImpact(int chunk, IntVector2 direction, float speed, bool firstContact)

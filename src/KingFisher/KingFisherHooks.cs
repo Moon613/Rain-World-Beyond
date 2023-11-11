@@ -6,49 +6,80 @@ using Random = UnityEngine.Random;
 using static System.Reflection.BindingFlags;
 using MonoMod.Cil;
 using Mono.Cecil.Cil;
+using System.Runtime.CompilerServices;
 
 namespace EasternExpansion;
 public class KingFisherHooks
 {
     #pragma warning disable CS8602
+    class KingFisherEx
+    {
+        public int startIndex;
+    }
+    static ConditionalWeakTable<VultureGraphics, KingFisherEx> KingFisherCWT = new ConditionalWeakTable<VultureGraphics, KingFisherEx>();
     internal static void Apply()
     {
         new Hook(typeof(Vulture).GetMethod("get_IsKing", Public | NonPublic | Instance), (Func<Vulture, bool> orig, Vulture self) => self.Template.type == CreatureTemplateType.KingFisher || orig(self));
         On.KingTusks.Tusk.TuskBend += TuskBend;
         On.KingTusks.Tusk.TuskProfBend += TuskProfBend;
         On.KingTusks.Tusk.DrawSprites += Tusk_DrawSprites;
-        On.VultureGraphics.ctor += VultureGraphics_ctor;
         On.Player.Grabability += Player_Grabability;
         On.Player.IsObjectThrowable += Player_IsObjectThrowable;
+        On.VultureGraphics.ctor += VultureGraphics_ctor;
         On.VultureGraphics.InitiateSprites += VultureGraphics_InitiateSprites;
+        On.VultureGraphics.DrawSprites += VultureGraphics_DrawSprites;
         IL.SlugcatHand.Update += SlugcatHand_Update;
         IL.Vulture.DropMask += Vulture_DropMask;
         IL.LizardAI.IUseARelationshipTracker_UpdateDynamicRelationship += IL_LizardAI_UpdateDynamicRelationship;
         IL.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_Physobj_bool;
     }
+    private static void VultureGraphics_DrawSprites(On.VultureGraphics.orig_DrawSprites orig, VultureGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+    {
+        orig(self, sLeaser, rCam, timeStacker, camPos);
+        if (self.vulture.Template.type == CreatureTemplateType.KingFisher && KingFisherCWT.TryGetValue(self, out var kingFisherEx)) {
+            sLeaser.sprites[self.MaskArrowSprite].element = Futile.atlasManager.GetElementWithName("FisherDrop" + self.headGraphic.ToString());
+            sLeaser.sprites[kingFisherEx.startIndex].x = sLeaser.sprites[self.MaskSprite].x;
+            sLeaser.sprites[kingFisherEx.startIndex].y = sLeaser.sprites[self.MaskSprite].y;
+            sLeaser.sprites[kingFisherEx.startIndex].rotation = sLeaser.sprites[self.MaskSprite].rotation;
+            sLeaser.sprites[kingFisherEx.startIndex].element = Futile.atlasManager.GetElementWithName("FisherMark" + self.headGraphic.ToString());
+            sLeaser.sprites[kingFisherEx.startIndex].scaleX = sLeaser.sprites[self.MaskSprite].scaleX;
+            sLeaser.sprites[kingFisherEx.startIndex].scaleY = sLeaser.sprites[self.MaskSprite].scaleY;
+            sLeaser.sprites[kingFisherEx.startIndex].isVisible = sLeaser.sprites[self.MaskSprite].isVisible;
+            sLeaser.sprites[kingFisherEx.startIndex].color = sLeaser.sprites[self.MaskArrowSprite].color;
+            sLeaser.sprites[kingFisherEx.startIndex].MoveInFrontOfOtherNode(sLeaser.sprites[self.MaskSprite]);
+        }
+    }
     private static void VultureGraphics_InitiateSprites(On.VultureGraphics.orig_InitiateSprites orig, VultureGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
+        if (self.vulture.Template.type == CreatureTemplateType.KingFisher && KingFisherCWT.TryGetValue(self, out var kingFisherEx)) {
+            kingFisherEx.startIndex = sLeaser.sprites.Length;
+            Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length + 1);
+            sLeaser.sprites[kingFisherEx.startIndex] = new FSprite("pixel", true);
+            self.AddToContainer(sLeaser, rCam, null);
+        }
     }
     private static void Vulture_DropMask(ILContext il)
     {
         var cursor = new ILCursor(il);
         var label = il.DefineLabel();
         if (!cursor.TryGotoNext(MoveType.After, i => i.MatchStfld(out _))) {
-            Plugin.Logger.LogDebug("Chimeric DropMask IL Failed");
             return;
         }
         cursor.Emit(OpCodes.Ldarg_0);
         cursor.Emit(OpCodes.Ldarg_1);
         cursor.EmitDelegate((Vulture self, Vector2 violenceDir) => {
             if (self.Template.type == CreatureTemplateType.KingFisher) {
-                AbstractPhysicalObject abstractPhysicalObject = new FisherMaskAbstract(self.room.world, self.abstractPhysicalObject.pos, self.room.game.GetNewID());
-                self.room.abstractRoom.AddEntity(abstractPhysicalObject);
-                abstractPhysicalObject.pos = self.abstractCreature.pos;
-                abstractPhysicalObject.RealizeInRoom();
-                abstractPhysicalObject.realizedObject.firstChunk.HardSetPosition(self.bodyChunks[4].pos);
-                abstractPhysicalObject.realizedObject.firstChunk.vel = self.bodyChunks[4].vel + violenceDir;
-                (abstractPhysicalObject.realizedObject as FisherMask).fallOffVultureMode = 1f;
+                FisherMaskAbstract abstractFisherMask = new FisherMaskAbstract(self.room.world, self.abstractPhysicalObject.pos, self.room.game.GetNewID())
+                {
+                    colorSeed = self.abstractCreature.ID.RandomSeed
+                };
+                self.room.abstractRoom.AddEntity(abstractFisherMask);
+                abstractFisherMask.pos = self.abstractCreature.pos;
+                abstractFisherMask.RealizeInRoom();
+                abstractFisherMask.realizedObject.firstChunk.HardSetPosition(self.bodyChunks[4].pos);
+                abstractFisherMask.realizedObject.firstChunk.vel = self.bodyChunks[4].vel + violenceDir;
+                (abstractFisherMask.realizedObject as FisherMask).fallOffVultureMode = 1f;
                 return true;
             }
             return false;
@@ -57,7 +88,6 @@ public class KingFisherHooks
         cursor.Emit(OpCodes.Brtrue, label);
 
         if (!cursor.TryGotoNext(MoveType.After, i => i.MatchLdcR4(1), i => i.MatchStfld(out _))) {
-            Plugin.Logger.LogDebug("Chimeric DropMask IL Failed");
             return;
         }
         cursor.MarkLabel(label);
@@ -117,7 +147,6 @@ public class KingFisherHooks
             }
         });
     }
-
     private static Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
         {
             Player.ObjectGrabability result = orig(self, obj);
@@ -133,6 +162,7 @@ public class KingFisherHooks
         if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
             self.ColorA = new HSLColor(170f/360f, 0.63f, 0.52f);
             self.ColorB = new HSLColor(170f/360f, 0.92f, 0.72f);
+            KingFisherCWT.Add(self, new KingFisherEx());
         }
     }
     private static float TuskBend(On.KingTusks.Tusk.orig_TuskBend orig, KingTusks.Tusk self, float f)
