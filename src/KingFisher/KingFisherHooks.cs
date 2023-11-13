@@ -23,15 +23,41 @@ public class KingFisherHooks
         On.KingTusks.Tusk.TuskBend += TuskBend;
         On.KingTusks.Tusk.TuskProfBend += TuskProfBend;
         On.KingTusks.Tusk.DrawSprites += Tusk_DrawSprites;
+        On.KingTusks.Tusk.ShootUpdate += KingTusks_Tusk_ShootUpdate;
         On.Player.Grabability += Player_Grabability;
         On.Player.IsObjectThrowable += Player_IsObjectThrowable;
         On.VultureGraphics.ctor += VultureGraphics_ctor;
         On.VultureGraphics.InitiateSprites += VultureGraphics_InitiateSprites;
         On.VultureGraphics.DrawSprites += VultureGraphics_DrawSprites;
+        On.PreyTracker.TrackedPrey.Attractiveness += PreyTracker_TrackedPrey_Attractiveness;
         IL.SlugcatHand.Update += SlugcatHand_Update;
         IL.Vulture.DropMask += Vulture_DropMask;
         IL.LizardAI.IUseARelationshipTracker_UpdateDynamicRelationship += IL_LizardAI_UpdateDynamicRelationship;
         IL.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_Physobj_bool;
+    }
+    private static float PreyTracker_TrackedPrey_Attractiveness(On.PreyTracker.TrackedPrey.orig_Attractiveness orig, PreyTracker.TrackedPrey self)
+    {
+        float result = orig(self);
+        if (self.owner.AI.creature.creatureTemplate.type == CreatureTemplateType.KingFisher) {
+            Debug.Log($"EE: target creature: {self.critRep.representedCreature.creatureTemplate.type}");
+            Debug.Log($"EE: target creature submersion: {self.critRep.representedCreature.realizedCreature.Submersion}");
+            Debug.Log($"EE: Result before modify: {result}");
+            if (self.critRep.representedCreature.realizedCreature.Submersion > 0f) {
+                result *= 10 * self.critRep.representedCreature.realizedCreature.Submersion;
+            }
+            else {
+                result /= 10;
+            }
+            Debug.Log($"EE: Result after modify: {result}");
+        }
+        return result;
+    }
+    private static void KingTusks_Tusk_ShootUpdate(On.KingTusks.Tusk.orig_ShootUpdate orig, KingTusks.Tusk self, float speed)
+    {
+        if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
+            speed *= 3f;
+        }
+        orig(self, speed);
     }
     private static void VultureGraphics_DrawSprites(On.VultureGraphics.orig_DrawSprites orig, VultureGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
