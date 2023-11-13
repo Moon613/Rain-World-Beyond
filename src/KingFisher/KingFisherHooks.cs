@@ -31,10 +31,31 @@ public class KingFisherHooks
         On.VultureGraphics.DrawSprites += VultureGraphics_DrawSprites;
         On.PreyTracker.TrackedPrey.Attractiveness += PreyTracker_TrackedPrey_Attractiveness;
         On.KingTusks.WantToShoot += KingTusks_WantToShoot;
+        IL.AImap.TileAccessibleToCreature_IntVector2_CreatureTemplate += AImap_TileAccessibleToCreature;
         IL.SlugcatHand.Update += SlugcatHand_Update;
         IL.Vulture.DropMask += Vulture_DropMask;
         IL.LizardAI.IUseARelationshipTracker_UpdateDynamicRelationship += IL_LizardAI_UpdateDynamicRelationship;
         IL.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_Physobj_bool;
+    }
+    private static void AImap_TileAccessibleToCreature(ILContext il)
+    {
+        var cursor = new ILCursor(il);
+        var label = cursor.DefineLabel();
+        cursor.Emit(OpCodes.Ldarg_0);
+        cursor.Emit(OpCodes.Ldarg_1);
+        cursor.Emit(OpCodes.Ldarg_2);
+        cursor.EmitDelegate((AImap self, IntVector2 pos, CreatureTemplate crit) => {
+            if (crit.type == CreatureTemplateType.KingFisher && self.room.GetTile(pos).AnyWater && !(self.room.GetTile(new IntVector2(pos.x, pos.y+8)).AnyWater || self.room.GetTile(pos).Solid)) {
+                return true;
+            }
+            return false;
+        });
+        cursor.Emit(OpCodes.Brtrue, label);
+        if (!cursor.TryGotoNext(MoveType.After, i => i.MatchRet())) {
+            Plugin.Logger.LogDebug("EExpansion AImap IL Failed!");
+            return;
+        }
+        cursor.MarkLabel(label);
     }
     private static bool KingTusks_WantToShoot(On.KingTusks.orig_WantToShoot orig, KingTusks self, bool checkVisualOnAnyTargetChunk, bool checkMinDistance)
     {
