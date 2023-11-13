@@ -30,10 +30,18 @@ public class KingFisherHooks
         On.VultureGraphics.InitiateSprites += VultureGraphics_InitiateSprites;
         On.VultureGraphics.DrawSprites += VultureGraphics_DrawSprites;
         On.PreyTracker.TrackedPrey.Attractiveness += PreyTracker_TrackedPrey_Attractiveness;
+        On.KingTusks.WantToShoot += KingTusks_WantToShoot;
         IL.SlugcatHand.Update += SlugcatHand_Update;
         IL.Vulture.DropMask += Vulture_DropMask;
         IL.LizardAI.IUseARelationshipTracker_UpdateDynamicRelationship += IL_LizardAI_UpdateDynamicRelationship;
         IL.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_Physobj_bool;
+    }
+    private static bool KingTusks_WantToShoot(On.KingTusks.orig_WantToShoot orig, KingTusks self, bool checkVisualOnAnyTargetChunk, bool checkMinDistance)
+    {
+        if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
+            checkMinDistance = false;
+        }
+        return orig(self, checkVisualOnAnyTargetChunk, checkMinDistance);
     }
     private static float PreyTracker_TrackedPrey_Attractiveness(On.PreyTracker.TrackedPrey.orig_Attractiveness orig, PreyTracker.TrackedPrey self)
     {
