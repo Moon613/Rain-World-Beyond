@@ -9,7 +9,7 @@ class FisherMaskFisob : Fisob
 {
     public FisherMaskFisob() : base(EnumExt_VultureMask.FisherMask)
     {
-        Icon = new SimpleIcon("Kill_Vulture", Color.green);
+        Icon = new SimpleIcon("Kill_KingVulture", Color.green);
         RegisterUnlock(EnumExt_VultureMask.FisherMaskUnlock, parent: MultiplayerUnlocks.SandboxUnlockID.Vulture);
     }
 
