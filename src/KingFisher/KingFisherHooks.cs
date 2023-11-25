@@ -54,6 +54,7 @@ public class KingFisherHooks
         }
     }
     #region King Fisher Creature Hooks
+    // Skips a early return, and is what lets the King Fisher pather pathfind up to 8 tiles under the water
     private static void AImap_TileAccessibleToCreature(ILContext il)
     {
         var cursor = new ILCursor(il);
@@ -74,6 +75,7 @@ public class KingFisherHooks
         }
         cursor.MarkLabel(label);
     }
+    // Forces the King Fisher tusks to not check againer minimum range ever, making it much more agressive in shooting
     private static bool KingTusks_WantToShoot(On.KingTusks.orig_WantToShoot orig, KingTusks self, bool checkVisualOnAnyTargetChunk, bool checkMinDistance)
     {
         if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
@@ -81,6 +83,7 @@ public class KingFisherHooks
         }
         return orig(self, checkVisualOnAnyTargetChunk, checkMinDistance);
     }
+    // Modifies the attractiveness of prey for just the King Fisher, making targets fully submerged 1000x more attractive, and those not 10 times less so.
     private static float PreyTracker_TrackedPrey_Attractiveness(On.PreyTracker.TrackedPrey.orig_Attractiveness orig, PreyTracker.TrackedPrey self)
     {
         float result = orig(self);
@@ -98,6 +101,7 @@ public class KingFisherHooks
         }
         return result;
     }
+    // Multiplies the speed of the Fisher's tusks by 3. This is already really fast
     private static void KingTusks_Tusk_ShootUpdate(On.KingTusks.Tusk.orig_ShootUpdate orig, KingTusks.Tusk self, float speed)
     {
         if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
@@ -105,6 +109,7 @@ public class KingFisherHooks
         }
         orig(self, speed);
     }
+    // Draw the extra sprite on the mask for the cheek markings, and make the normal arrow sprite the teardrop shaped sprite.
     private static void VultureGraphics_DrawSprites(On.VultureGraphics.orig_DrawSprites orig, VultureGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         orig(self, sLeaser, rCam, timeStacker, camPos);
@@ -133,6 +138,7 @@ public class KingFisherHooks
             }
         }
     }
+    // If the vulture is a King Fisher, add the extra mask cheek sprite to the sLeaser array. Also adjust the body size.
     private static void VultureGraphics_InitiateSprites(On.VultureGraphics.orig_InitiateSprites orig, VultureGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
     {
         orig(self, sLeaser, rCam);
@@ -140,9 +146,11 @@ public class KingFisherHooks
             kingFisherEx.startIndex = sLeaser.sprites.Length;
             Array.Resize(ref sLeaser.sprites, sLeaser.sprites.Length + 1);
             sLeaser.sprites[kingFisherEx.startIndex] = new FSprite("pixel", true);
+            sLeaser.sprites[self.BodySprite].scale = 1f;
             self.AddToContainer(sLeaser, rCam, null);
         }
     }
+    // Skips all code spawning a normal Vulture Mask, and instead spawns the custom Fisher Mask using the same code copy-pasted
     private static void Vulture_DropMask(ILContext il)
     {
         var cursor = new ILCursor(il);
@@ -176,79 +184,7 @@ public class KingFisherHooks
         }
         cursor.MarkLabel(label);
     }
-    private static void SlugcatHand_Update(ILContext il)
-    {
-        var cursor = new ILCursor(il);
-        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchIsinst(nameof(VultureMask)))) {
-            return;
-        }
-        if (!cursor.TryGotoPrev(MoveType.After, i => i.MatchLdarg(0))) {
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg_0);
-        cursor.EmitDelegate((SlugcatHand self) => {
-			if ((self.owner.owner as Creature)?.grasps[self.limbNumber].grabbed is FisherMask fisherMask)
-			{
-				self.relativeHuntPos *= 1f - fisherMask.donned;
-			}
-        });
-    }
-    private static void ScavengerAI_CollectScore_Physobj_bool(ILContext il)
-    {
-        var cursor = new ILCursor(il);
-        var label = il.DefineLabel();
-        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchIsinst(nameof(Mushroom)))) {
-            return;
-        }
-        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg(1))) {
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg_1);
-        cursor.Emit(OpCodes.Isinst, typeof(FisherMask));
-        cursor.Emit(OpCodes.Brfalse, label);
-        cursor.Emit(OpCodes.Ldc_I4, 7);
-        cursor.Emit(OpCodes.Ret);
-        cursor.MarkLabel(label);
-    }
-    private static bool Player_IsObjectThrowable(On.Player.orig_IsObjectThrowable orig, Player self, PhysicalObject obj)
-    {
-        return orig(self, obj) && obj is not FisherMask;
-    }
-    private static void IL_LizardAI_UpdateDynamicRelationship(ILContext il)
-    {
-        var cursor = new ILCursor(il);
-        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchIsinst(nameof(Spear)))) {
-            return;
-        }
-        if (!cursor.TryGotoPrev(MoveType.Before, i => i.MatchLdarg(1))) {
-            return;
-        }
-        cursor.Emit(OpCodes.Ldarg_1);
-        cursor.Emit(OpCodes.Ldloc, 4);
-        cursor.EmitDelegate((RelationshipTracker.DynamicRelationship dRelation, int i) => {
-            if (dRelation.trackerRep.representedCreature.realizedCreature.grasps[i].grabbed is FisherMask) {
-                (dRelation.state as LizardAI.LizardTrackState).vultureMask = Math.Max((dRelation.state as LizardAI.LizardTrackState).vultureMask, 2);
-            }
-        });
-    }
-    private static Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
-        {
-            Player.ObjectGrabability result = orig(self, obj);
-            if (obj is FisherMask)
-            {
-                return Player.ObjectGrabability.OneHand;
-            }
-            return result;
-        }
-    private static void VultureGraphics_ctor(On.VultureGraphics.orig_ctor orig, VultureGraphics self, Vulture ow)
-    {
-        orig(self, ow);
-        if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
-            self.ColorA = new HSLColor(170f/360f, 0.63f, 0.52f);
-            self.ColorB = new HSLColor(170f/360f, 0.92f, 0.72f);
-            KingFisherCWT.Add(self, new KingFisherEx());
-        }
-    }
+    // Modifies the bendiness and path of the tusks
     private static float TuskBend(On.KingTusks.Tusk.orig_TuskBend orig, KingTusks.Tusk self, float f)
     {
         float origValue = orig(self, f);
@@ -257,6 +193,7 @@ public class KingFisherHooks
         }
         return 0.3f*Mathf.Cos(Mathf.Pow(3.75f*f, 0.85f)) + (0.45f*Mathf.Cos(Mathf.Pow(1.15f*f,0.85f))) - 0.3f;
     }
+    // Modifies the bendiness and path of the tusks
     private static float TuskProfBend(On.KingTusks.Tusk.orig_TuskProfBend orig, KingTusks.Tusk self, float f)
     {
         float origValue = orig(self, f);
@@ -424,5 +361,73 @@ public class KingFisherHooks
         }
         sLeaser.sprites[vGraphics.TuskWireSprite(self.side)].isVisible = false;
     }
+    #endregion
+    // All these hooks restore most of the normal Vulture Mask behavior to the custom Fisher Mask. Still don't know how to stop the slugcat from trying to wear two at a time.
+    #region Mask Object Hooks
+    private static void SlugcatHand_Update(ILContext il)
+    {
+        var cursor = new ILCursor(il);
+        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchIsinst(nameof(VultureMask)))) {
+            return;
+        }
+        if (!cursor.TryGotoPrev(MoveType.After, i => i.MatchLdarg(0))) {
+            return;
+        }
+        cursor.Emit(OpCodes.Ldarg_0);
+        cursor.EmitDelegate((SlugcatHand self) => {
+			if ((self.owner.owner as Creature)?.grasps[self.limbNumber].grabbed is FisherMask fisherMask)
+			{
+				self.relativeHuntPos *= 1f - fisherMask.donned;
+			}
+        });
+    }
+    private static void ScavengerAI_CollectScore_Physobj_bool(ILContext il)
+    {
+        var cursor = new ILCursor(il);
+        var label = il.DefineLabel();
+        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchIsinst(nameof(Mushroom)))) {
+            return;
+        }
+        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchLdarg(1))) {
+            return;
+        }
+        cursor.Emit(OpCodes.Ldarg_1);
+        cursor.Emit(OpCodes.Isinst, typeof(FisherMask));
+        cursor.Emit(OpCodes.Brfalse, label);
+        cursor.Emit(OpCodes.Ldc_I4, 7);
+        cursor.Emit(OpCodes.Ret);
+        cursor.MarkLabel(label);
+    }
+    private static bool Player_IsObjectThrowable(On.Player.orig_IsObjectThrowable orig, Player self, PhysicalObject obj)
+    {
+        return orig(self, obj) && obj is not FisherMask;
+    }
+    private static void IL_LizardAI_UpdateDynamicRelationship(ILContext il)
+    {
+        var cursor = new ILCursor(il);
+        if (!cursor.TryGotoNext(MoveType.Before, i => i.MatchIsinst(nameof(Spear)))) {
+            return;
+        }
+        if (!cursor.TryGotoPrev(MoveType.Before, i => i.MatchLdarg(1))) {
+            return;
+        }
+        cursor.Emit(OpCodes.Ldarg_1);
+        cursor.Emit(OpCodes.Ldloc, 4);
+        cursor.EmitDelegate((RelationshipTracker.DynamicRelationship dRelation, int i) => {
+            if (dRelation.trackerRep.representedCreature.realizedCreature.grasps[i].grabbed is FisherMask) {
+                (dRelation.state as LizardAI.LizardTrackState).vultureMask = Math.Max((dRelation.state as LizardAI.LizardTrackState).vultureMask, 2);
+            }
+        });
+    }
+    private static Player.ObjectGrabability Player_Grabability(On.Player.orig_Grabability orig, Player self, PhysicalObject obj)
+    {
+        Player.ObjectGrabability result = orig(self, obj);
+        if (obj is FisherMask)
+        {
+            return Player.ObjectGrabability.OneHand;
+        }
+        return result;
+    }
+    #endregion
     #pragma warning restore CS8602
 }
