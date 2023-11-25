@@ -1,0 +1,7 @@
+Parent: none
+Type: AboveCloudsView
+OffsetX: 0
+OffsetY: 0
+cloudsCount: 0
+distantCloudsCount: 0
+daySky: elebkg_Sky
