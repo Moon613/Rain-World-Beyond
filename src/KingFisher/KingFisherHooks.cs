@@ -32,12 +32,28 @@ public class KingFisherHooks
         On.VultureGraphics.DrawSprites += VultureGraphics_DrawSprites;
         On.PreyTracker.TrackedPrey.Attractiveness += PreyTracker_TrackedPrey_Attractiveness;
         On.KingTusks.WantToShoot += KingTusks_WantToShoot;
+        On.Vulture.ctor += Vulture_ctor;
         IL.AImap.TileAccessibleToCreature_IntVector2_CreatureTemplate += AImap_TileAccessibleToCreature;
         IL.SlugcatHand.Update += SlugcatHand_Update;
         IL.Vulture.DropMask += Vulture_DropMask;
         IL.LizardAI.IUseARelationshipTracker_UpdateDynamicRelationship += IL_LizardAI_UpdateDynamicRelationship;
         IL.ScavengerAI.CollectScore_PhysicalObject_bool += ScavengerAI_CollectScore_Physobj_bool;
     }
+    private static void Vulture_ctor(On.Vulture.orig_ctor orig, Vulture self, AbstractCreature abstractCreature, World world)
+    {
+        orig(self, abstractCreature, world);
+        if (self.Template.type == CreatureTemplateType.KingFisher) {
+            for (int i = 0; i < self.bodyChunkConnections.Length; i++) {
+                if (i!=6 && i!=7) {
+                    self.bodyChunkConnections[i].distance *= 0.85f;
+                }
+            }
+            for (int i = 0; i < self.bodyChunks.Length-1; i++) {
+                self.bodyChunks[i].rad *= 0.95f;
+            }
+        }
+    }
+    #region King Fisher Creature Hooks
     private static void AImap_TileAccessibleToCreature(ILContext il)
     {
         var cursor = new ILCursor(il);
