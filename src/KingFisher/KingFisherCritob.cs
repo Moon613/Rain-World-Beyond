@@ -10,8 +10,8 @@ namespace EasternExpansion;
 sealed class KingFisher : Critob{
     public KingFisher() : base(CreatureTemplateType.KingFisher)
     {
-        Icon = new SimpleIcon("Kill_KingVulture", Color.green);
-        RegisterUnlock(KillScore.Configurable(25), SandboxUnlockID.KingFisher);
+        Icon = new SimpleIcon("Kill_KingFisher", Custom.HSL2RGB(170f/360f, 0.63f, 0.52f));
+        RegisterUnlock(KillScore.Configurable(15), SandboxUnlockID.KingFisher);
         SandboxPerformanceCost = new(3f, 1.5f);
         LoadedPerformanceCost = 20f;
         ShelterDanger = ShelterDanger.TooLarge;
@@ -32,6 +32,7 @@ sealed class KingFisher : Critob{
         t.movementBasedVision = 0.2f;
         t.waterPathingResistance = 0;
         t.waterRelationship = CreatureTemplate.WaterRelationship.AirAndSurface;
+        // A full minute before drowning!
         t.lungCapacity = 2400;
         return t;
     }

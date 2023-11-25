@@ -20,6 +20,7 @@ public class KingFisherHooks
     internal static void Apply()
     {
         new Hook(typeof(Vulture).GetMethod("get_IsKing", Public | NonPublic | Instance), (Func<Vulture, bool> orig, Vulture self) => self.Template.type == CreatureTemplateType.KingFisher || orig(self));
+        // new Hook(typeof(CreatureTemplate).GetMethod("get_IsVulture", Public | NonPublic | Instance), (Func<CreatureTemplate, bool> orig, CreatureTemplate self) => self.type == CreatureTemplateType.KingFisher || orig(self));
         On.KingTusks.Tusk.TuskBend += TuskBend;
         On.KingTusks.Tusk.TuskProfBend += TuskProfBend;
         On.KingTusks.Tusk.DrawSprites += Tusk_DrawSprites;
@@ -102,6 +103,18 @@ public class KingFisherHooks
             sLeaser.sprites[kingFisherEx.startIndex].isVisible = sLeaser.sprites[self.MaskSprite].isVisible;
             sLeaser.sprites[kingFisherEx.startIndex].color = sLeaser.sprites[self.MaskArrowSprite].color;
             sLeaser.sprites[kingFisherEx.startIndex].MoveInFrontOfOtherNode(sLeaser.sprites[self.MaskSprite]);
+        }
+    }
+    // Modify the effect colors for the King Fisher, and add a CWT to the Graphics module to keep track of the array position of the extra cheek sprite.
+    private static void VultureGraphics_ctor(On.VultureGraphics.orig_ctor orig, VultureGraphics self, Vulture ow)
+    {
+        orig(self, ow);
+        if (self.vulture.Template.type == CreatureTemplateType.KingFisher) {
+            self.ColorB = new HSLColor(Mathf.Lerp(0.4f, 0.53f, Random.value), Mathf.Lerp(0.58f, 0.73f, 1f - Random.value * Random.value), Mathf.Lerp(0.28f, 0.76f, Random.value * Random.value));
+            self.ColorA = new HSLColor(170f/360f, 0.92f, 0.72f);
+            if (!KingFisherCWT.TryGetValue(self, out _)) {
+                KingFisherCWT.Add(self, new KingFisherEx());
+            }
         }
     }
     private static void VultureGraphics_InitiateSprites(On.VultureGraphics.orig_InitiateSprites orig, VultureGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
@@ -236,6 +249,8 @@ public class KingFisherHooks
         }
         return 0.3f*Mathf.Cos(Mathf.Pow(3.75f*f, 0.85f)) + (0.45f*Mathf.Cos(Mathf.Pow(1.15f*f,0.85f))) - 0.3f;
     }
+    // A copy-paste of the normal Vulture DrawSprites method, but edited to make the barbs on the King Fisher's tusks.
+    // Done by just moving one of the verticies of the trianglemesh back and to the side.
     private static void Tusk_DrawSprites(On.KingTusks.Tusk.orig_DrawSprites orig, KingTusks.Tusk self, VultureGraphics vGraphics, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
     {
         if (self.vulture.Template.type != CreatureTemplateType.KingFisher) {
@@ -314,7 +329,7 @@ public class KingFisherHooks
             Vector2 a4 = Custom.PerpendicularVector(normalized);
             float d = Vector2.Distance(vector10, vector9) / 5f;
             float num4 = self.TuskRad(num3, Mathf.Abs(vector2.y));
-
+            // Edits start here
             float additionalx = 0f;
             float additionaly = 0f;
             if (i == 13 && self.vulture.Template.type == CreatureTemplateType.KingFisher) { additionalx = 7f; additionaly = 10f; }
@@ -329,6 +344,8 @@ public class KingFisherHooks
             }
             else
             {
+                // Originally I tried to make these using ternary operations, but that did not work and was too hard to follow along/debug
+                // Also, vector2.x and vector2.y are responsible for the 'Z-axis' rotation's influence on the x and y axis, respectively, it would seem
                 if (self.side == 1) {
                     if (vector2.x <= 0) {
                         (sLeaser.sprites[self.TuskSprite(vGraphics)] as TriangleMesh)?.MoveVertice(i * 4 + 2, vector10 - a4 * (num4 + additionalx * -vector2.x) - normalized * (d + additionaly) - camPos);
@@ -350,6 +367,7 @@ public class KingFisherHooks
                     }
                 }
             }
+            // Edits done
             num2 = num4;
             vector9 = vector10;
         }

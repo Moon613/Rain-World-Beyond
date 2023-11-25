@@ -1,6 +1,7 @@
 ﻿using Fisobs.Core;
 using Fisobs.Items;
 using Fisobs.Sandbox;
+using RWCustom;
 using UnityEngine;
 
 namespace EasternExpansion;
@@ -9,8 +10,8 @@ class FisherMaskFisob : Fisob
 {
     public FisherMaskFisob() : base(EnumExt_VultureMask.FisherMask)
     {
-        Icon = new SimpleIcon("Kill_KingVulture", Color.green);
-        RegisterUnlock(EnumExt_VultureMask.FisherMaskUnlock, parent: MultiplayerUnlocks.SandboxUnlockID.Vulture);
+        Icon = new SimpleIcon("Kill_FisherMask", Custom.HSL2RGB(170f/360f, 0.63f, 0.52f));
+        RegisterUnlock(EnumExt_VultureMask.FisherMaskUnlock);
     }
 
     public override AbstractPhysicalObject Parse(World world, EntitySaveData entitySaveData, SandboxUnlock? unlock)

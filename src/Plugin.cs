@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Security;
 using System.Security.Permissions;
 using System;
-using System.Runtime.CompilerServices;
 using Fisobs.Core;
 using BepInEx.Logging;
 using System.Diagnostics.CodeAnalysis;
@@ -42,6 +41,7 @@ public class Plugin : BaseUnityPlugin
             try {
                 Futile.atlasManager.LoadAtlas("atlases/FisherMark");
                 Futile.atlasManager.LoadAtlas("atlases/FisherDrop");
+                Futile.atlasManager.LoadAtlas("atlases/FisherArenaSprites");
             } catch (Exception err) {
                 Logger.LogError(err);
             }

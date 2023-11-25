@@ -1,0 +1,28 @@
+{"frames": {
+
+"Kill_FisherMask.png":
+{
+	"frame": {"x":0,"y":0,"w":17,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":21},
+	"sourceSize": {"w":17,"h":21}
+},
+"Kill_KingFisher.png":
+{
+	"frame": {"x":17,"y":0,"w":27,"h":27},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":27},
+	"sourceSize": {"w":27,"h":27}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "FisherArenaSprites.png",
+	"format": "RGBA8888",
+	"size": {"w":44,"h":27},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f243213c0ad0e388c1893496d41d6f79:08b9fcb3800591e1ba2d8e5d96cc92b1:c54afe5b2bbf1b3229037443e278df26$"
+}
+}
