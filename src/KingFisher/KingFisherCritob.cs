@@ -13,7 +13,7 @@ sealed class KingFisher : Critob{
         Icon = new SimpleIcon("Kill_KingFisher", Custom.HSL2RGB(170f/360f, 0.63f, 0.52f));
         RegisterUnlock(KillScore.Configurable(15), SandboxUnlockID.KingFisher);
         SandboxPerformanceCost = new(3f, 1.5f);
-        LoadedPerformanceCost = 20f;
+        LoadedPerformanceCost = 140f;
         ShelterDanger = ShelterDanger.TooLarge;
         CreatureName = "King Fisher";
         KingFisherHooks.Apply();
@@ -30,7 +30,9 @@ sealed class KingFisher : Critob{
         t.waterVision = 1;
         t.throughSurfaceVision = 1;
         t.movementBasedVision = 0.2f;
-        t.waterPathingResistance = 0;
+        t.waterPathingResistance = 1.25f;
+        t.interestInOtherCreaturesCatches = 0.75f;
+        t.meatPoints = 14;
         t.waterRelationship = CreatureTemplate.WaterRelationship.AirAndSurface;
         // A full minute before drowning!
         t.lungCapacity = 2400;

@@ -85,16 +85,16 @@ public class KingFisherHooks
     {
         float result = orig(self);
         if (self.owner.AI.creature.creatureTemplate.type == CreatureTemplateType.KingFisher) {
-            Debug.Log($"EE: target creature: {self.critRep.representedCreature.creatureTemplate.type}");
-            Debug.Log($"EE: target creature submersion: {self.critRep.representedCreature.realizedCreature.Submersion}");
-            Debug.Log($"EE: Result before modify: {result}");
+            // Debug.Log($"EE: target creature: {self.critRep.representedCreature.creatureTemplate.type}");
+            // Debug.Log($"EE: target creature submersion: {self.critRep.representedCreature.realizedCreature.Submersion}");
+            // Debug.Log($"EE: Result before modify: {result}");
             if (self.critRep.representedCreature.realizedCreature.Submersion > 0f) {
-                result *= 10 * self.critRep.representedCreature.realizedCreature.Submersion;
+                result *= 1000 * self.critRep.representedCreature.realizedCreature.Submersion;
             }
             else {
                 result /= 10;
             }
-            Debug.Log($"EE: Result after modify: {result}");
+            // Debug.Log($"EE: Result after modify: {result}");
         }
         return result;
     }
