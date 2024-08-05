@@ -24,8 +24,8 @@ public class Plugin : BaseUnityPlugin
         Logger = base.Logger;
     }
     public const string MOD_ID = "eastern.expansion";
-    public const string MOD_NAME = "Eastern Expansion";
-    public const string MOD_VERSION = "1.0";
+    public const string MOD_NAME = "Rain World: Beyond";
+    public const string MOD_VERSION = "0.1";
     internal bool init = false;
     public void OnEnable()
     {
