@@ -32,6 +32,8 @@ public class Plugin : BaseUnityPlugin
         On.RainWorld.OnModsInit += OnModsInit;
         Content.Register(new KingFisher());
         Content.Register(new FisherMaskFisob());
+        Content.Register(new LanternKelpFisobs());
+        LanternKelpPlaced.RegisterLanternKelp();
     }
     private void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self) {
         orig(self);

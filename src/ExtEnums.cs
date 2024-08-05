@@ -12,3 +12,8 @@ public static class EnumExt_VultureMask
     [AllowNull] public static readonly AbstractPhysicalObject.AbstractObjectType FisherMask = new AbstractPhysicalObject.AbstractObjectType("FisherMask", true);
     [AllowNull] public static readonly MultiplayerUnlocks.SandboxUnlockID FisherMaskUnlock = new MultiplayerUnlocks.SandboxUnlockID("FisherMaskUnlock", true);
 }
+public static class EnumExt_LanternKelp
+{
+    [AllowNull] public static readonly AbstractPhysicalObject.AbstractObjectType LanternKelp = new AbstractPhysicalObject.AbstractObjectType("LanternKelp", true);
+    [AllowNull] public static readonly MultiplayerUnlocks.SandboxUnlockID LanternKelpUnlock = new MultiplayerUnlocks.SandboxUnlockID("LanternKelpUnlock", true);
+}
