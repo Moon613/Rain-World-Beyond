@@ -1,0 +1,18 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0
+WaveLength: 0
+SecondWaveLength: 0.1666667
+Clouds: 0
+Grime: 0
+BkgDroneVolume: 0
+RandomItemDensity: 0
+RandomItemSpearChance: 0
+Palette: 23
+Effects: ZeroG-1-63-118, Brightness-0-20-20, Darkness-0.3369565-283-232, ZeroGSpecks-0.05434782-333-122, 
+PlacedObjects: WallMycelia><128.1956><608.5576><2~-53, LightSource><130.9785><554.1989><0.2282609~Environment~450~-4~-204~-306.3974~0~0~None~0~0, LightFixture><26.37329><379.0953><RedLight~-98.67949~29~9, LightFixture><269.1944><637.7026><RedLight~-435.6795~-331~43, LightFixture><-169.1773><571.9075><RedLight~17.32051~-10~13, SuperStructureFuses><289.0864><311.8849><357~52, SuperStructureFuses><291.6421><456.6408><284~49, SuperStructureFuses><292.1724><589.1485><417~54, SuperStructureFuses><293.8796><194.6523><259.0001~52, LightFixture><252.3077><258.0551><RedLight~17.32051~-10~71, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><738.5714><605.41><0.3152181><1, SPOT><AM_WIN-StrongWnd2.ogg><740.6639><490.1353><0.3152174><1><119.6639><389.1353><-92.35536><-76.35535><0><0.1, 
+WetTerrain: OFF

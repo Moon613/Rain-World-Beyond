@@ -1,0 +1,12 @@
+Template: NONE
+DangerType: None
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+RandomItemDensity: 0.141304
+RandomItemSpearChance: 0.05869558
+Palette: 23
+Effects: Darkness-0.3260866-276-22, LightBurn-0-284-81, ZeroG-1-20-94, SunBlock-1-300-227, ZeroGSpecks-0.04347826-20-20, 
+PlacedObjects: SuperStructureFuses><622.3527><242.1716><75~210, LightSource><462.4144><575.6808><0.07608663~Environment~-162~-159~-599.0001~-73.39746~0~0~None~0~0, LightSource><469.5675><103.1883><0.05434716~Environment~-131~232~50~86.60254~0~0~None~0~0, LightFixture><317.6487><641.8275><RedLight~17.32051~-10~43, LightFixture><311.6924><211.8046><RedLight~17.32051~-10~28, LightFixture><538.8014><0.2271423><RedLight~17.32051~-10~0, LightFixture><671.3361><546.1805><RedLight~17.32051~-10~79, SSLightRod><653.5555><591.7035><17.32051~-10~0.467391~225~426.956~0.5, SSLightRod><319.1743><53.65186><412.3206~117~0.5~45~435.2174~0.5, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><760.8><556.7434><0.3586957><1, 
+FadePalette: 12, 0.07608695

@@ -1,0 +1,6 @@
+Template: NONE
+Clouds: 0.09521053
+Grime: 0.2216031
+Palette: 204
+EffectColorB: 6
+Effects: Darkness-0-20-20, 

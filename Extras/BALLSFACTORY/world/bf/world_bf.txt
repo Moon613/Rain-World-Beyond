@@ -1,0 +1,10 @@
+ROOMS
+
+bf_chainfence : gate_xx_bf, bf_watchtower
+gate_xx_bf : DISCONNECTED, bf_chainfence
+bf_watchtower : DISCONNECTED, bf_chainfence, bf_testingroom
+bf_testingroom : bf_watchtower
+END ROOMS
+CREATURES
+
+END CREATURES

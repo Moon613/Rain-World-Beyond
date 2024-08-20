@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: Rain
+CeilingDrips: 0.5
+WaveSpeed: 0.5760869
+WaveLength: 0.8043478
+WaveAmplitude: 0.326087
+SecondWaveLength: 0.1666668
+SecondWaveAmplitude: 0
+Clouds: 0.326087
+Grime: 0.3586957
+RandomItemDensity: 0.5
+Palette: 13
+
+
+FadePalette: 4, 0.1521739, 0.1413043, 0.1521739, 0.1521739, 0.1521739

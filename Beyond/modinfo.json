@@ -1,0 +1,12 @@
+{
+	"id": "rainworld.beyond",
+	"name": "Beyond",
+	"version": "0.1",
+	"hide_version": false,
+	"authors": "Beyond Dev Team",
+	"description": "Beyond the slugcar, the regions, and the other stuff smile",
+	"requirements": ["moreslugcats", "regionkit", "pom", "fisobs", "crs"],
+	"requirements_names": ["More Slugcats", "Region Kit", "POM", "Fisobs", "Custom Region Support"],
+	"checksum_override_version": false,
+	"tags" : []
+}

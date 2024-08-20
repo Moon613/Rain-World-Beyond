@@ -1,0 +1,8 @@
+Template: NONE
+Clouds: 0.5543478
+Grime: 0.2826087
+Palette: 12
+EffectColorB: 5
+PlacedObjects: CustomDecal><203.3544><21.1371><16~375~435~393~812~50~-322~109~0~1~0~rustb3~0.2717391~1~0.5869565~1~0.4456522~1~0.6630435~1, 
+FadePalette: 34, 0.5
+MorePalette0: 8, 0.09782609

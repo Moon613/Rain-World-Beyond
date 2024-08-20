@@ -1,0 +1,9 @@
+{
+	"id": "ballsfactory",
+	"name": "BallsFactory",
+	"authors": "FactoryWorkers",
+	"description": "testregion",
+	"requirements": ["regionkit"],
+	"requirements_names": ["RegionKit"],
+	"checksum_override_version": false
+}

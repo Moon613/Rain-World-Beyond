@@ -1,0 +1,4 @@
+Template: NONE
+Palette: 0
+EffectColorA: 0
+EffectColorB: 0

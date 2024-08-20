@@ -1,0 +1,3 @@
+Template: NONE
+Clouds: 0.08695652
+Palette: 204

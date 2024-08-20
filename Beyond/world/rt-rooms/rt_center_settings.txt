@@ -1,0 +1,7 @@
+Template: NONE
+Clouds: 0.1086956
+Grime: 0.25
+Palette: 13
+PlacedObjects: CustomDecal><315.7933><100.1953><2~372~319~397~385.0001~-25~-258~181~0.04347826~1~0~orangepink~0.4565217~0~0.358696~0~0~0.4130442~0.6304348~0.9673916, 
+FadePalette: 6, 0.3586957
+MorePalette0: 33, 0.1630435

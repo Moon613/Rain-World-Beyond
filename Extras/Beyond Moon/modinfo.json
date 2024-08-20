@@ -1,0 +1,10 @@
+{
+	"id": "turt.beyondmoon",
+	"name": "Beyond Moon",
+	"version": "0.0.1",
+	"authors": "Turt",
+	"description": "Adds in the Retaining Wall, and a hard to reach path to it...",
+	"requirements": ["regionkit", "moreslugcats", "rwremix"],
+	"requirements_names": ["RegionKit", "More Slugcats Expansion", "Rain World Remix"],
+	"checksum_override_version": false
+}

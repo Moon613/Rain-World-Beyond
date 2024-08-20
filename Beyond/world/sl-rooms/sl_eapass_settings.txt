@@ -1,0 +1,13 @@
+Template: NONE
+WaveLength: 0.4021739
+WaveAmplitude: 0
+SecondWaveLength: 0.08695652
+SecondWaveAmplitude: 0
+Clouds: 0.75
+Grime: 0
+RandomItemDensity: 0.5
+Palette: 13
+Effects: Contrast-0.02173913-20-20, 
+PlacedObjects: CustomDecal><-61.89186><-31.10907><121~736~1064~729~867~-415~722~23~0~1~0~rust2~0.2934783~1~1~1~0.4565217~1~0~1, 
+AmbientSounds: OMNI><waterGurgleLOOP1.wav><777.6993><368.5159><0.25><1, OMNI><AM_IND-SuperStructure.ogg><793.354><492.8292><0.2826094><1, SPOT><SO_WAT-OpenFlow.ogg><749.3002><221.74><0.3260856><1><201.3002><205.74><51.64462><118.6447><0><0.1652175, 
+FadePalette: 8, 0.6847824

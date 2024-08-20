@@ -1,0 +1,12 @@
+[MERGE]
+Room_Attr: DM_EAST01: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,
+Room_Attr: DM_EAST02: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,
+Room_Attr: DM_EAST03: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Like,
+Room_Attr: DM_EAST04: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,
+Room_Attr: DM_EAST05: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,
+Room_Attr: DM_EAST06: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,
+Room_Attr: DM_EAST07: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Forbidden,
+//Room_Attr: DM_EAST08
+//Room_Attr: DM_EAST09
+Room_Attr: DM_EAST10: PinkLizard-Forbidden,GreenLizard-Forbidden,BlueLizard-Forbidden,YellowLizard-Forbidden,WhiteLizard-Forbidden,RedLizard-Forbidden,BlackLizard-Forbidden,Salamander-Forbidden,CyanLizard-Forbidden,DropBug-Forbidden,MirosVulture-Forbidden,Inspector-Like,
+//Room_Attr: DM_EAST11

@@ -1,0 +1,6 @@
+Template: NONE
+DangerType: None
+Grime: 0
+Palette: 24
+Effects: Bloom-0.6739131-22-203, SunBlock-1-20-137, ZeroGSpecks-0.3152174-20-72, ZeroG-1-20-20, SSSwarmers-0.2391304-293-82, 
+PlacedObjects: WallMycelia><729.8304><558.8169><-11~-83, WallMycelia><747.0605><117.0643><-97~54, WallMycelia><162.8><254.0024><65~46, WallMycelia><403.6393><588.8935><47~-71, CoralCircuit><565.3976><401.0782><-47~55, CoralCircuit><498.4493><308.016><-6~75, CoralCircuit><421.4176><405.6091><-9~43, CoralNeuron><267.9623><534.4464><-52~-166, CoralNeuron><819.3477><448.6295><-140~-282, LightSource><854.582><590.045><0.08695652~Environment~-233~-101~-97.31213~-211.3975~0~0~None~0~0, LightSource><119.619><299.5988><0.08695652~Environment~-73~195~50~86.60254~1~0~None~0~0, LightSource><485.612><582.8948><0.1304348~Environment~-317~-161~-110~-236.3975~1~0~None~0~0, SpotLight><264.1917><202.9433><18~520~570~506~533~-26, CoralStem><386.0839><588.8885><-105~-249, 

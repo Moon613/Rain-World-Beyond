@@ -1,0 +1,20 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0
+WaveLength: 0
+SecondWaveLength: 0.1666667
+Clouds: 1
+Grime: 0
+BkgDroneVolume: 0
+RandomItemDensity: 0.1413043
+WaterReflectionAlpha: 0
+Palette: 23
+EffectColorA: 12
+Effects: Darkness-0.358696-319-84, BrokenZeroG-0-322-148, ElectricDeath-0-332-213, ZeroG-1-343-287, SunBlock-1-346-351, 
+PlacedObjects: SuperStructureFuses><719.558><87.71761><30~262, SuperStructureFuses><626.684><89.67169><49~263, LightSource><189.8533><434.6671><0.08683047~Environment~423~-259~-69~39.60248~1~0~None~0~0, LightSource><699.0873><209.8662><0.08695652~Environment~-236.9999~397~-300~225.6025~0~0~None~0~0, LightFixture><443.314><306.1764><RedLight~-40.6795~68~53, LightFixture><94.42578><603.0953><RedLight~17.32051~-10~32, LightFixture><884.2681><613.8008><RedLight~-506.6794~-32~81, LightFixture><119.6992><172.5178><RedLight~-1.679504~223~46, CoralStem><170.1932><526.302><-7~-107, CoralStem><437.3132><535.8215><-1~-110, WallMycelia><303.0746><475.1856><7~202, 
+AmbientSounds: OMNI><AM_IND-SuperStructure.ogg><599.3587><641.3584><0.3478261><1, SPOT><Basic Mech.wav><21.56091><483.3095><0.2391304><1><303.5609><460.3094><-111.3553><-117.3553><0><0.2847821, SPOT><SO_IND-MechHum02.ogg><23.0672><364.4384><0.1956509><1><391.0672><125.4384><-55.35529><-72.35535><0><0.1, SPOT><SO_SFX-Data5.ogg><24.94696><245.4652><0.6739137><1><682.947><244.4652><-17.35529><-133.3553><0><0.03260803, SPOT><SO_SFX-Data3.ogg><850.334><339.0685><0.5><1><691.334><563.0685><-37.35529><-68.35535><0><0.078261, 
+FadePalette: 12, 0.09782609
+WetTerrain: OFF

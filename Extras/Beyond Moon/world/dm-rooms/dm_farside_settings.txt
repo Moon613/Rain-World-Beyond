@@ -1,0 +1,6 @@
+Template: DM_SettingsTemplate_Wall
+Clouds: 0
+Grime: 0.1086956
+Palette: 74
+Effects: Darkness-0.2282609-288-20, DayNight-0.3369565-282-78, LightBurn-0.02173913-281-134, Fog-0-25-18, 
+

@@ -1,0 +1,4 @@
+[MERGE]
+GATE_TR_BF : 1 : 1
+GATE_SU_BF : 1 : 1
+[ENDMERGE]
