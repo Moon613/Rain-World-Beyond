@@ -1,0 +1,7 @@
+Template: NONE
+CeilingDrips: 0
+Clouds: 0.6195652
+Grime: 0.1630435
+Palette: 5125
+FadePalette: 29, 0.1630435, 0.1304348, 0.1521739, 0.173913
+MorePalette0: 8, 0.1086956, 0.1086956, 0, 0

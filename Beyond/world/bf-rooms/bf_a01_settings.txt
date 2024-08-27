@@ -1,0 +1,5 @@
+Template: NONE
+Clouds: 0.3369565
+Grime: 0.1304348
+Palette: 5125
+FadePalette: 8, 0.1521739

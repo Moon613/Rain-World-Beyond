@@ -1,0 +1,10 @@
+Template: NONE
+CeilingDrips: 0
+Clouds: 0.4456522
+Grime: 0.1630435
+Palette: 5125
+EffectColorB: 10
+Effects: ReplaceEffectColorA-0.173913-959-362-Color-1-0.3913043-0.3586957, Bloom-0.2608696-20-20, 
+PlacedObjects: CustomDecal><495.6941><308.7018><19~270~426~381~546~58~-265~54~0.25~0.4673913~0~stoneheaddefacing~0.2391304~1~0.2065217~1~0.2065217~1~0.3152174~1, CustomDecal><-14><195><-16~243~592~347~588~149~348~-226~0.1413043~0.4673913~0~stoneheaddefacing~0.2391304~1~0.2065217~1~0.2065217~1~0.3152174~1, 
+FadePalette: 29, 0.25
+MorePalette0: 8, 0.1956522
