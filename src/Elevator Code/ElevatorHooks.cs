@@ -178,7 +178,7 @@ internal class ElevatorHooks
             self.rainCycle = room.world.rainCycle;
             self.doors = new RegionGate.Door[2];
             self.mode = RegionGate.Mode.MiddleClosed;
-            self.goalDoorPositions = [0f, 0f];
+            self.goalDoorPositions = new float[2]{0f, 0f};
             for (int k = 0; k < 2; k++)
             {
                 self.doors[k] = new RegionGate.Door(self, k){closedFac = 0f};
